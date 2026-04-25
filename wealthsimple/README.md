@@ -1,16 +1,12 @@
 # Wealthsimple Dividend Importer
 
-Processes Wealthsimple exports for streamlined income tracking.
+## 📊 Expected Formats
+* **Monthly Statements:** Download PDF -> Convert to CSV (e.g., via Tabula).
+* **Activity Tab:** Filter for "Dividends" -> Download CSV.
 
-## 📊 Export Instructions
-* **Monthly Statements:** Download the PDF Statement -> Convert to CSV.
-* **Activity Tab:** Filter for "Dividends" in the Activity tab -> Download CSV.
+## ⚙️ Key Features
+* **Regex Ticker Extraction:** Automatically pulls ticker symbols from the "Description" field.
+* **Log Sheet:** Maintains an internal registry of processed IDs to allow for overlapping statement uploads without data duplication.
 
-## ⚙️ Logic & Features
-* **Regex Ticker Extraction:** Pulls ticker symbols directly from the description text.
-* **Unified Integration:** Shares a menu interface with the TD tools for a centralized workflow.
-
-## 📂 System Sheets (Internal)
-* **`Import_Log_DoNotDelete`**: A persistent record of processed Wealthsimple transactions.
-    * **Purpose:** Ensures idempotency. It allows you to upload overlapping monthly statements without double-counting dividends.
-    * **Structure:** Records unique identifiers found in the Wealthsimple export to track processing state.
+## 📂 System Sheets
+* **`Import_Log_DoNotDelete`**: Hidden sheet managing transaction state.
